@@ -51,22 +51,46 @@ contract Burj_Al_Arab {
         _room.isBooked = true;
     }
 
-    function bookPanoramic() public {
+    function bookPanoramic(
+        string memory name,
+        uint8 checkInDate,
+        uint8 checkOutDate
+    ) public {
+        Booking memory panoramic = Booking(name, checkInDate, checkOutDate);
+        booking.push(panoramic);
         Room storage _room = room[1];
         _room.isBooked = true;
     }
 
-    function bookSky() public {
+    function bookSky(
+        string memory name,
+        uint8 checkInDate,
+        uint8 checkOutDate
+    ) public {
+        Booking memory sky = Booking(name, checkInDate, checkOutDate);
+        booking.push(sky);
         Room storage _room = room[2];
         _room.isBooked = true;
     }
 
-    function bookBurj() public {
+    function bookBurj(
+        string memory name,
+        uint8 checkInDate,
+        uint8 checkOutDate
+    ) public {
+        Booking memory burj = Booking(name, checkInDate, checkOutDate);
+        booking.push(burj);
         Room storage _room = room[3];
         _room.isBooked = true;
     }
 
-    function bookDiplomatic() public {
+    function bookDiplomatic(
+        string memory name,
+        uint8 checkInDate,
+        uint8 checkOutDate
+    ) public {
+        Booking memory diplomatic = Booking(name, checkInDate, checkOutDate);
+        booking.push(diplomatic);
         Room storage _room = room[4];
         _room.isBooked = true;
     }
