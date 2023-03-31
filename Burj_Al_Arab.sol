@@ -1,11 +1,8 @@
 // SPDX-License-Identifier: MIT
 
 /*
-
 Tasks:
-
 Build the Burj Al Arab in Dubai.
-
 */
 
 pragma solidity 0.8.19;
@@ -20,78 +17,21 @@ contract Burj_Al_Arab {
     Room[] public room;
 
     struct Booking {
+        address wallet;
         string name;
-        uint8 checkInDate;
-        uint8 checkOutDate;
     }
 
     Booking[] public booking;
 
-    function RoomType() public {
-        Room memory deluxe = Room("Deluxe Suite", 1, false);
-        Room memory panoramic = Room("Panoramic Suite", 2, false);
-        Room memory sky = Room("Sky Suite", 3, false);
-        Room memory burj = Room("Burj Family Suite", 4, false);
-        Room memory diplomatic = Room("Diplomatic Suite", 5, false);
-        room.push(deluxe);
-        room.push(panoramic);
-        room.push(sky);
-        room.push(burj);
-        room.push(diplomatic);
+    function setRoom() external {
+        room.push(Room("Deluxe Suite", 1, false));
+        room.push(Room("Panoramic Suite", 2, false));
+        room.push(Room("Sky Suite", 3, false));
+        room.push(Room("Burj Family Suite", 4, false));
+        room.push(Room("Diplomatic Suite", 5, false));
     }
 
-    function bookDeluxe(
-        string memory name,
-        uint8 checkInDate,
-        uint8 checkOutDate
-    ) public {
-        Booking memory deluxe = Booking(name, checkInDate, checkOutDate);
-        booking.push(deluxe);
-        Room storage _room = room[0];
-        _room.isBooked = true;
-    }
-
-    function bookPanoramic(
-        string memory name,
-        uint8 checkInDate,
-        uint8 checkOutDate
-    ) public {
-        Booking memory panoramic = Booking(name, checkInDate, checkOutDate);
-        booking.push(panoramic);
-        Room storage _room = room[1];
-        _room.isBooked = true;
-    }
-
-    function bookSky(
-        string memory name,
-        uint8 checkInDate,
-        uint8 checkOutDate
-    ) public {
-        Booking memory sky = Booking(name, checkInDate, checkOutDate);
-        booking.push(sky);
-        Room storage _room = room[2];
-        _room.isBooked = true;
-    }
-
-    function bookBurj(
-        string memory name,
-        uint8 checkInDate,
-        uint8 checkOutDate
-    ) public {
-        Booking memory burj = Booking(name, checkInDate, checkOutDate);
-        booking.push(burj);
-        Room storage _room = room[3];
-        _room.isBooked = true;
-    }
-
-    function bookDiplomatic(
-        string memory name,
-        uint8 checkInDate,
-        uint8 checkOutDate
-    ) public {
-        Booking memory diplomatic = Booking(name, checkInDate, checkOutDate);
-        booking.push(diplomatic);
-        Room storage _room = room[4];
-        _room.isBooked = true;
+    function setBooking(string memory _name) external {
+        booking.push(Booking(msg.sender, _name));
     }
 }
